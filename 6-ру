@@ -1,0 +1,27 @@
+class Element:
+  def _init_(self, key, value=None):
+    sekf.key = key
+    self.value = value
+
+class Container:
+  def _init_(self):
+    self.element = None
+  def put(self, key, value):
+    if self.element is None:
+      self.ement = Element(key, value)
+    elif self.element.key < key:
+      self.element = Element(key, value)
+  
+  def get(self):
+    if self.element is None:
+      return None
+     return self.element.value 
+     
+from container import Container
+
+c1 = Container()
+print(c1.get())
+c1.put(1, 'hello')
+print(c1.get())
+c1.put(2, 'world')
+print(c1.get())
