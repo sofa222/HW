@@ -45,14 +45,14 @@ class Deque:
 			raise Exception("Deque is empty.")
 
 		n = self.back
+		self.size -= 1
+
 		if n.next is None:
 			self.back = None
-			self.size = 0
 			return n.value
 
 		self.back = n.next
 		self.back.prev = None
-		self.size -= 1
 		return n.value
 
 	def pop_front(self):
@@ -60,14 +60,14 @@ class Deque:
 			raise Exception("Deque is empty.")
 
 		n = self.front
+		self.size -= 1
+
 		if n.prev is None:
 			self.front = None
-			self.size = 0
 			return n.value
 
 		self.front = n.prev
 		self.front.next = None
-		self.size -= 1
 		return n.value
 
 	def size():
@@ -75,13 +75,3 @@ class Deque:
 
 	def is_empty(self):
 		return self.size == 0
-
-if __name__ == "__main__":
-	deque = Deque()
-	deque.push_back(1)
-	deque.push_back(2)
-	deque.push_back(3)
-
-	print(deque.pop_back())
-	print(deque.pop_front())
-	print(deque.pop_back())
